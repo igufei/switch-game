@@ -21,9 +21,10 @@ class _CategoryState extends State<Category> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      alignment: Alignment.center,
       child: Wrap(
-        spacing: 10.0, // gap between adjacent chips
-        runSpacing: 4.0, // gap between lines
+        spacing: 28.0,
+        runSpacing: 4.0,
         children: widget.categorys.asMap().entries.map((e) {
           int index = e.key;
           var value = e.value;

@@ -66,8 +66,28 @@ class SearchBar extends GetView<GameController> {
                 )),
           ),
         ),
+        // Padding(padding: EdgeInsets.only(left: 15), child: Obx(() => Text('${controller.gameCount.value}款'))),
         Spacer(),
-        Padding(padding: EdgeInsets.only(right: 5), child: Obx(() => Text('第${controller.currentPageIndex.value}页'))),
+        Padding(
+            padding: EdgeInsets.only(right: 5),
+            child: Obx(() {
+              var pageNum = (controller.gameCount.value / 12).ceil();
+              return RichText(
+                  text: TextSpan(
+                style: TextStyle(color: Colors.black),
+                children: [
+                  TextSpan(text: '第'),
+                  TextSpan(text: '${controller.currentPageIndex.value}', style: TextStyle(color: Colors.red)),
+                  TextSpan(text: '/'),
+                  TextSpan(text: '$pageNum'),
+                  TextSpan(text: '页  '),
+                  TextSpan(text: '${controller.gameCount.value}', style: TextStyle(color: Colors.blue)),
+                  TextSpan(text: '款'),
+                ],
+              ));
+
+              return Text('第${controller.currentPageIndex.value}/$pageNum页  ${controller.gameCount.value}款');
+            })),
         MyButton(
           title: '上一页',
           onPressed: () {

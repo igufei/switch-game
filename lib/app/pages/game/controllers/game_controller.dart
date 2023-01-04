@@ -7,6 +7,7 @@ import 'package:switch_game/app/model/game_model.dart';
 
 class GameController extends GetxController {
   var viewIndex = 0.obs;
+  var gameCount = 0.obs;
   var currentCategoryID = 0.obs;
   var currentCategoryIndex = 0.obs;
   var currentPageIndex = 1.obs;
@@ -16,13 +17,14 @@ class GameController extends GetxController {
   var category = <dynamic>[];
   void loadGames() {
     games.value = GameModel.findMany(currentCategoryID.value, gameNameC.text, currentPageIndex.value);
+    gameCount.value = GameModel.count(currentCategoryID.value, gameNameC.text, currentPageIndex.value);
     games.refresh();
   }
 
   @override
   void onInit() {
     category = jsonDecode(categoryData);
-    games.value = GameModel.findMany(currentCategoryID.value, gameNameC.text, currentPageIndex.value);
+    loadGames();
     super.onInit();
   }
 }

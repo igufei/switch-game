@@ -6,6 +6,7 @@ import 'package:switch_game/app/data/category_data.dart';
 import 'package:switch_game/app/data/game_data.dart';
 
 class GameModel {
+  static List<dynamic> _gameList = [];
   static String categoryId2Text(int categoryID) {
     List<dynamic> categorys = jsonDecode(categoryData);
     for (var item in categorys) {
@@ -18,10 +19,31 @@ class GameModel {
     return '未知';
   }
 
+  static int count(int categoryID, String gameName, int pageIndex) {
+    List<GameSchame> list = [];
+    gameName = gameName.trim();
+    for (var item in _gameList) {
+      var game = _parseData(item);
+      if (categoryID == game.categoryID) {
+        if (game.name == '') {
+          list.add(game);
+        } else if (game.name.contains(gameName)) {
+          list.add(game);
+        }
+      } else if (categoryID == 0) {
+        if (game.name == '') {
+          list.add(game);
+        } else if (game.name.contains(gameName)) {
+          list.add(game);
+        }
+      }
+    }
+    return list.length;
+  }
+
   static Future<GameSchame?> findByGameID(int id) async {
-    var gameList = jsonDecode(gameData) as List;
-    for (int i = 0; i < gameList.length; i++) {
-      var item = gameList[i];
+    for (int i = 0; i < _gameList.length; i++) {
+      var item = _gameList[i];
       var game = _parseData(item);
       if (id == game.id) {
         if (game.slug != '') {
@@ -35,7 +57,7 @@ class GameModel {
           List<String> imageList = [];
           for (var item in detailsImages) {
             var image = item.querySelector('a')?.attributes['href'];
-            if (image != null && !image.contains('.mp4')) {
+            if (image != null) {
               imageList.add(image);
             }
           }
@@ -66,8 +88,7 @@ class GameModel {
   static List<GameSchame> findMany(int categoryID, String gameName, int pageIndex) {
     List<GameSchame> list = [];
     gameName = gameName.trim();
-    var gameList = jsonDecode(gameData) as List;
-    for (var item in gameList) {
+    for (var item in _gameList) {
       var game = _parseData(item);
       if (categoryID == game.categoryID) {
         if (game.name == '') {
@@ -84,6 +105,11 @@ class GameModel {
       }
     }
     return _sublist(list, pageIndex);
+  }
+
+  static void initData() {
+    _gameList = jsonDecode(gameData) as List;
+    _gameList.shuffle();
   }
 
   static GameSchame _parseData(Map data) {

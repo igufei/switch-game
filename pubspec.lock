@@ -294,6 +294,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.2.8"
+  windows_notification:
+    dependency: "direct main"
+    description:
+      name: windows_notification
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.3"
 sdks:
   dart: ">=2.18.5 <3.0.0"
   flutter: ">=2.10.0"

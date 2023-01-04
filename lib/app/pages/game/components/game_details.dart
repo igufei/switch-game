@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:switch_game/app/model/game_model.dart';
+import 'package:switch_game/widgets/click.dart';
 import 'package:switch_game/widgets/msg.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -20,7 +21,7 @@ class GameDetails extends GetView {
         //border: Border.all(color: Color.fromARGB(255, 234, 233, 233), width: 0.1),
         color: Colors.white,
       ),
-      child: Column(
+      child: ListView(
         children: [
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -76,9 +77,11 @@ class GameDetails extends GetView {
                                   style: TextStyle(color: Color(0xff9497a0)),
                                 ),
                               ),
-                              Text(
-                                typeText,
-                                overflow: TextOverflow.ellipsis,
+                              Expanded(
+                                child: Text(
+                                  typeText,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
                               ),
                             ],
                           ),
@@ -95,9 +98,11 @@ class GameDetails extends GetView {
                                   style: TextStyle(color: Color(0xff9497a0)),
                                 ),
                               ),
-                              Text(
-                                game.language == '' ? '-' : game.language,
-                                overflow: TextOverflow.ellipsis,
+                              Expanded(
+                                child: Text(
+                                  game.language == '' ? '-' : game.language,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
                               ),
                             ],
                           ),
@@ -133,9 +138,11 @@ class GameDetails extends GetView {
                                   style: TextStyle(color: Color(0xff9497a0)),
                                 ),
                               ),
-                              Text(
-                                game.publishDate == '' ? '-' : game.publishDate,
-                                overflow: TextOverflow.ellipsis,
+                              Expanded(
+                                child: Text(
+                                  game.publishDate == '' ? '-' : game.publishDate,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
                               ),
                             ],
                           ),
@@ -234,6 +241,20 @@ class GameDetails extends GetView {
             ),
             items: game.detailsImages.map(
               (url) {
+                if (url.contains('.mp4')) {
+                  return Container(
+                    alignment: Alignment.center,
+                    color: Colors.black12,
+                    child: Click(
+                        onClick: () {
+                          launchUrl(Uri.parse(url));
+                        },
+                        child: Text(
+                          '点击查看游戏视频',
+                          style: TextStyle(fontSize: 30, color: Colors.blue),
+                        )),
+                  );
+                }
                 return game.cover.contains('indienova')
                     ? Image.network(
                         url,

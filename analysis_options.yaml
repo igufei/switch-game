@@ -2,3 +2,5 @@ include: package:flutter_lints/flutter.yaml
 linter:
   rules:
     prefer_const_constructors: false
+    prefer_is_empty: false
+    must_be_immutable: false

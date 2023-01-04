@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 
 import '../controllers/home_controller.dart';
@@ -39,6 +38,10 @@ class HomeView extends GetView<HomeController> {
                     NavigationRailDestination(
                       icon: Icon(Icons.lunch_dining),
                       label: Text('Mod'),
+                    ),
+                    NavigationRailDestination(
+                      icon: Icon(Icons.folder),
+                      label: Text('工具'),
                     ),
                   ],
                   selectedIndex: controller.pageIndex.value,

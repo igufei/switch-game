@@ -36,24 +36,35 @@ class GameList extends GetView<GameController> {
           onNextPage: controller.loadGames,
           onPreviousPage: controller.loadGames,
         ),
-        Container(
-          alignment: Alignment.center,
-          padding: EdgeInsets.only(top: 5),
-          child: Obx(() => Wrap(
-                spacing: 10.0, // gap between adjacent chips
-                runSpacing: 4.0,
-                children: controller.games
-                    .map((element) => GameItem(
-                          game: element,
-                          onClick: (id) async {
-                            var game = await GameModel.findByGameID(id);
-                            controller.gameDetail.value = SizedBox(child: GameDetails(game: game!));
-                            controller.viewIndex.value = 1;
-                          },
-                        ))
-                    .toList(),
-              )),
-        ),
+        Obx(() {
+          return controller.games.length > 0
+              ? Container(
+                  alignment: Alignment.center,
+                  padding: EdgeInsets.only(top: 5),
+                  child: Wrap(
+                    spacing: 10.0, // gap between adjacent chips
+                    runSpacing: 4.0,
+                    children: controller.games
+                        .map((element) => GameItem(
+                              game: element,
+                              onClick: (id) async {
+                                var game = await GameModel.findByGameID(id);
+                                controller.gameDetail.value = SizedBox(child: GameDetails(game: game!));
+                                controller.viewIndex.value = 1;
+                              },
+                            ))
+                        .toList(),
+                  ),
+                )
+              : Container(
+                  padding: EdgeInsets.only(top: 100),
+                  alignment: Alignment.center,
+                  child: Text(
+                    '没有任何数据',
+                    style: TextStyle(fontSize: 20),
+                  ),
+                );
+        }),
       ],
     );
   }

@@ -20,111 +20,102 @@ class GameItem extends GetView {
       onClick: () {
         onClick(game.id);
       },
-      child: Container(
+      child: SizedBox(
         width: 300,
-        margin: EdgeInsets.only(top: 4, bottom: 4),
-        decoration: BoxDecoration(
-          //border: Border.all(color: Color.fromARGB(255, 234, 233, 233), width: 0.1),
-          color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              blurStyle: BlurStyle.normal,
-              color: Colors.black.withOpacity(0.1),
-              spreadRadius: 0.3,
-              blurRadius: 0.3,
-              offset: Offset(1, 1), // changes position of shadow
-            ),
-          ],
-        ),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            game.cover.contains('indienova')
-                ? Image.network(
-                    game.cover,
-                    width: 120,
-                    height: 120,
-                    fit: BoxFit.cover,
-                    headers: const {'referer': 'https://indienova.com/'},
-                  )
-                : Image.network(
-                    game.cover,
-                    width: 120,
-                    height: 120,
-                    fit: BoxFit.cover,
-                  ),
-            Container(
-              width: 170,
-              padding: EdgeInsets.only(top: 11, bottom: 5, right: 5, left: 5),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    game.name,
-                    style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  Text(
-                    game.englishName,
-                    style: TextStyle(fontSize: 10),
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  SizedBox(height: 5),
-                  Row(
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.only(right: 5),
-                        child: Text(
-                          '类型',
-                          style: TextStyle(color: Color(0xff9497a0)),
+        //margin: EdgeInsets.only(top: 4, bottom: 4),
+        child: Card(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(0)),
+          elevation: 2,
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              game.cover.contains('indienova')
+                  ? Image.network(
+                      game.cover,
+                      width: 120,
+                      height: 120,
+                      fit: BoxFit.cover,
+                      headers: const {'referer': 'https://indienova.com/'},
+                    )
+                  : Image.network(
+                      game.cover,
+                      width: 120,
+                      height: 120,
+                      fit: BoxFit.cover,
+                    ),
+              Container(
+                width: 170,
+                padding: EdgeInsets.only(top: 11, bottom: 5, right: 5, left: 5),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      game.name,
+                      style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    Text(
+                      game.englishName,
+                      style: TextStyle(fontSize: 10),
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    SizedBox(height: 5),
+                    Row(
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(right: 5),
+                          child: Text(
+                            '类型',
+                            style: TextStyle(color: Color(0xff9497a0)),
+                          ),
                         ),
-                      ),
-                      Expanded(
-                        child: Text(
-                          typeText,
-                          overflow: TextOverflow.ellipsis,
+                        Expanded(
+                          child: Text(
+                            typeText,
+                            overflow: TextOverflow.ellipsis,
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.only(right: 5),
-                        child: Text(
-                          '语言',
-                          style: TextStyle(color: Color(0xff9497a0)),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(right: 5),
+                          child: Text(
+                            '语言',
+                            style: TextStyle(color: Color(0xff9497a0)),
+                          ),
                         ),
-                      ),
-                      Expanded(
-                        child: Text(
-                          game.language == '' ? '-' : game.language,
-                          overflow: TextOverflow.ellipsis,
+                        Expanded(
+                          child: Text(
+                            game.language == '' ? '-' : game.language,
+                            overflow: TextOverflow.ellipsis,
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.only(right: 5),
-                        child: Text(
-                          '版本',
-                          style: TextStyle(color: Color(0xff9497a0)),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(right: 5),
+                          child: Text(
+                            '版本',
+                            style: TextStyle(color: Color(0xff9497a0)),
+                          ),
                         ),
-                      ),
-                      Expanded(
-                        child: Text(
-                          game.version == '' ? '-' : game.version,
-                          overflow: TextOverflow.ellipsis,
+                        Expanded(
+                          child: Text(
+                            game.version == '' ? '-' : game.version,
+                            overflow: TextOverflow.ellipsis,
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                ],
+                      ],
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

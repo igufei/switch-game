@@ -12,7 +12,7 @@ class ArchiveView extends GetView<ArchiveController> {
       appBar: WindowsAppBar(title: 'Switch存档下载'),
       body: const Center(
         child: Text(
-          'ArchiveView is working',
+          '内容开发中...',
           style: TextStyle(fontSize: 20),
         ),
       ),
