@@ -1,0 +1,20 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "flutter",
+			"command": "flutter",
+			"args": [
+				"build",
+				"windows",
+				"--no-tree-shake-icons",
+				"--obfuscate",
+				"--split-debug-info=./"
+			],
+			"group": "build",
+			"problemMatcher": [],
+			"label": "build-windows",
+			"detail": ""
+		}
+	]
+}

@@ -4,11 +4,13 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:switch_game/app/model/game_model.dart';
+import 'package:switch_game/app/pages/game/controllers/game_controller.dart';
 import 'package:switch_game/widgets/click.dart';
 import 'package:switch_game/widgets/msg.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:webview_windows/webview_windows.dart';
 
-class GameDetails extends GetView {
+class GameDetails extends GetView<GameController> {
   final GameSchame game;
   const GameDetails({super.key, required this.game});
 
@@ -246,8 +248,20 @@ class GameDetails extends GetView {
                     alignment: Alignment.center,
                     color: Colors.black12,
                     child: Click(
-                        onClick: () {
-                          launchUrl(Uri.parse(url));
+                        onClick: () async {
+                          //launchUrl(Uri.parse(url));
+                          final wc = WebviewController();
+                          await wc.initialize();
+                          await wc.setPopupWindowPolicy(WebviewPopupWindowPolicy.sameWindow);
+                          await wc.loadUrl(url);
+                          await Get.dialog(
+                            Dialog(
+                              child: Webview(wc),
+                            ),
+                            barrierDismissible: true,
+                            barrierColor: Colors.white,
+                          );
+                          wc.dispose();
                         },
                         child: Text(
                           '点击查看游戏视频',

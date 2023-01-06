@@ -14,6 +14,7 @@ class GameController extends GetxController {
   var games = <GameSchame>[].obs;
   Rx<Widget> gameDetail = SizedBox(width: 0).obs;
   TextEditingController gameNameC = TextEditingController();
+
   var category = <dynamic>[];
   void loadGames() {
     games.value = GameModel.findMany(currentCategoryID.value, gameNameC.text, currentPageIndex.value);

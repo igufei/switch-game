@@ -1,23 +1,22 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
-import 'package:switch_game/widgets/msg.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'package:windows_notification/notification_message.dart';
-import 'package:windows_notification/windows_notification.dart';
+import 'package:switch_game/app/pages/tools/components/app_path.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class ToolsItem extends GetView {
   final String name;
   final String icon;
   final String summary;
-  final String downUrl;
+  final String path;
   const ToolsItem({
     super.key,
     required this.name,
     required this.icon,
     required this.summary,
-    required this.downUrl,
+    required this.path,
   });
 
   @override
@@ -45,39 +44,33 @@ class ToolsItem extends GetView {
                 GFButton(
                   shape: GFButtonShape.square,
                   size: 25,
-                  text: '打开应用',
-                  onPressed: () {
-                    final winNotify = WindowsNotification(applicationId: 'Switch游戏');
+                  text: '立即启动',
+                  onPressed: () async {
+                    var exists = await File(path).exists();
+                    if (!exists) {
+                      Get.dialog(
+                        Dialog(child: AppPath()),
+                        barrierDismissible: true,
+                      );
+                    } else {
+                      launchUrlString(path);
+                    }
+
+                    /* final winNotify = WindowsNotification(applicationId: 'Switch游戏');
                     NotificationMessage message = NotificationMessage.fromPluginTemplate('id', 'hello', 'world');
-                    winNotify.showNotificationPluginTemplate(message);
+                    winNotify.showNotificationPluginTemplate(message); */
+
+                    /* WidgetsBinding.instance.addPostFrameCallback((_) {
+                      showDialog(
+                          context: context,
+                          builder: (_) => AlertDialog(
+                                content: Webview(
+                                  controller,
+                                ),
+                              ));
+                    }); */
                   },
                   color: Colors.red,
-                ),
-                SizedBox(width: 5),
-                GFButton(
-                  shape: GFButtonShape.square,
-                  onPressed: () {
-                    var arr = downUrl.split('&&&&');
-                    if (arr.length == 2) {
-                      Clipboard.setData(ClipboardData(text: arr[1]));
-                      if (Get.isSnackbarOpen) {
-                        return;
-                      }
-                      Msg.confirm(
-                        '提示',
-                        '密码已复制,在网页中直接粘贴即可',
-                        onOK: () {
-                          Get.back();
-                          launchUrl(Uri.parse(arr[0]));
-                        },
-                        onCancel: null,
-                        barrierDismissible: false,
-                      );
-                      //
-                    }
-                  },
-                  size: 25,
-                  text: '立即下载',
                 ),
               ],
             ),
