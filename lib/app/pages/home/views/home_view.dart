@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:switch_game/modules/my_icons.dart';
 
 import '../controllers/home_controller.dart';
 
@@ -21,26 +22,30 @@ class HomeView extends GetView<HomeController> {
                   minExtendedWidth: 140,
                   selectedIconTheme: IconThemeData(color: Get.theme.primaryColorDark, size: 30),
                   unselectedIconTheme: IconThemeData(color: Colors.black, size: 30),
-                  destinations: const [
+                  destinations: [
                     NavigationRailDestination(
                       padding: EdgeInsets.all(0),
-                      icon: Icon(Icons.games),
+                      icon: Icon(MyIcons.game),
                       label: Text('游戏'),
                     ),
                     NavigationRailDestination(
-                      icon: Icon(Icons.feed),
+                      padding: EdgeInsets.all(0),
+                      icon: Icon(MyIcons.archive),
                       label: Text('存档'),
                     ),
                     NavigationRailDestination(
-                      icon: Icon(Icons.key),
+                      padding: EdgeInsets.all(0),
+                      icon: Icon(MyIcons.lock),
                       label: Text('金手指'),
                     ),
                     NavigationRailDestination(
-                      icon: Icon(Icons.lunch_dining),
+                      padding: EdgeInsets.all(0),
+                      icon: Icon(MyIcons.mod),
                       label: Text('Mod'),
                     ),
                     NavigationRailDestination(
-                      icon: Icon(Icons.folder),
+                      padding: EdgeInsets.all(0),
+                      icon: Icon(MyIcons.tool),
                       label: Text('工具'),
                     ),
                   ],

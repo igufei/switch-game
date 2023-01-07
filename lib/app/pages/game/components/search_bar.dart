@@ -1,5 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:switch_game/app/pages/game/controllers/game_controller.dart';
 import 'package:switch_game/widgets/my_button.dart';
@@ -8,12 +8,21 @@ class SearchBar extends GetView<GameController> {
   final dynamic Function() onSearched;
   final dynamic Function() onNextPage;
   final dynamic Function() onPreviousPage;
-  const SearchBar({
+  final FocusNode _fn = FocusNode();
+  SearchBar({
     super.key,
     required this.onSearched,
     required this.onNextPage,
     required this.onPreviousPage,
-  });
+  }) {
+    _fn.onKey = ((node, event) {
+      if (event.isKeyPressed(LogicalKeyboardKey.enter)) {
+        onSearched();
+        return KeyEventResult.handled;
+      }
+      return KeyEventResult.ignored;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -21,31 +30,70 @@ class SearchBar extends GetView<GameController> {
         SizedBox(
           width: 200,
           height: 27,
-          child: CupertinoTextField(
-            prefix: Padding(
-              padding: const EdgeInsets.only(left: 2),
-              child: Icon(
-                Icons.search,
-                size: 17,
-                color: Get.theme.primaryColorDark,
+          child: TextField(
+            focusNode: _fn,
+            controller: controller.gameNameC,
+            cursorHeight: 18,
+            decoration: InputDecoration(
+              contentPadding: EdgeInsets.zero,
+              isDense: false,
+              prefixIcon: Container(
+                padding: const EdgeInsets.only(left: 5, right: 4),
+                //color: Colors.red,
+                child: Icon(
+                  Icons.search,
+                  size: 17,
+                  color: Get.theme.primaryColorDark,
+                ),
+              ),
+              prefixIconConstraints: BoxConstraints(minHeight: 17, minWidth: 17),
+              hintText: '请输入游戏名称',
+              border: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: Get.theme.primaryColorDark,
+                  width: 1,
+                ),
+                borderRadius: BorderRadius.zero,
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: Get.theme.primaryColorDark,
+                  width: 1,
+                ),
+                borderRadius: BorderRadius.zero,
+              ),
+              disabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: Get.theme.primaryColorDark,
+                  width: 1,
+                ),
+                borderRadius: BorderRadius.zero,
+              ),
+              errorBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: Get.theme.primaryColorDark,
+                  width: 1,
+                ),
+                borderRadius: BorderRadius.zero,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: Get.theme.primaryColorDark,
+                  width: 1,
+                ),
+                borderRadius: BorderRadius.zero,
+              ),
+              focusedErrorBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: Get.theme.primaryColorDark,
+                  width: 1,
+                ),
+                borderRadius: BorderRadius.zero,
               ),
             ),
-            decoration: BoxDecoration(
-                color: Colors.white,
-                border: Border.all(
-                  color: Get.theme.primaryColorDark, // Color(0xff2c2c41),
-                  width: 1,
-                )),
-            cursorColor: Get.theme.primaryColorDark, // Color(0xff2c2c41),
-            placeholder: '请输入游戏名称',
-            placeholderStyle: TextStyle(fontSize: 13, color: Colors.black54),
             style: TextStyle(fontSize: 13, color: Colors.black),
-            padding: EdgeInsets.only(left: 5, right: 5, top: 2.5, bottom: 2.5),
-            controller: controller.gameNameC,
+            cursorColor: Get.theme.primaryColorDark,
             cursorWidth: 1,
-            cursorHeight: 18,
-            keyboardType: TextInputType.text,
-            textAlign: TextAlign.left,
           ),
         ),
         MouseRegion(
@@ -85,8 +133,6 @@ class SearchBar extends GetView<GameController> {
                   TextSpan(text: '款'),
                 ],
               ));
-
-              return Text('第${controller.currentPageIndex.value}/$pageNum页  ${controller.gameCount.value}款');
             })),
         MyButton(
           title: '上一页',

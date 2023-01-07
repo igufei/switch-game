@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:switch_game/widgets/click.dart';
+import 'package:switch_game/widgets/route_box.dart';
+import 'package:switch_game/widgets/visible.dart';
 import 'package:window_manager/window_manager.dart';
 
 class WindowsAppBar extends StatefulWidget implements PreferredSizeWidget {
   final String title;
-  final Widget? leading;
-  const WindowsAppBar({super.key, required this.title, this.leading});
+  final RouteController? routeController;
+  const WindowsAppBar({
+    super.key,
+    required this.title,
+    this.routeController,
+  });
 
   @override
   Size get preferredSize => Size(double.infinity, 50);
@@ -18,12 +24,26 @@ class _WindowsAppBarState extends State<WindowsAppBar> {
   Color closeBtnBgColor = Colors.transparent;
   Color minBtnBgColor = Colors.transparent;
   Color closeBtnTextColor = Colors.black;
+  bool showBackWidget = false;
   @override
   Widget build(BuildContext context) {
     return AppBar(
       title: Row(
         children: [
-          if (widget.leading != null) widget.leading!,
+          Visible(
+              isVisible: showBackWidget,
+              child: Click(
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 8),
+                  child: Icon(
+                    Icons.arrow_back,
+                    color: Colors.black,
+                  ),
+                ),
+                onClick: () {
+                  widget.routeController?.back();
+                },
+              )),
           GestureDetector(
             onPanStart: (d) {
               windowManager.startDragging();
@@ -109,5 +129,37 @@ class _WindowsAppBarState extends State<WindowsAppBar> {
       elevation: 1,
       backgroundColor: Colors.white,
     );
+  }
+
+  @override
+  void dispose() {
+    widget.routeController?.removeListener(_listener);
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _listener();
+    widget.routeController?.addListener(_listener);
+  }
+
+  void _listener() {
+    if (widget.routeController == null) {
+      return;
+    }
+    if (widget.routeController!.views.length > 1) {
+      if (mounted) {
+        setState(() {
+          showBackWidget = true;
+        });
+      }
+    } else {
+      if (mounted) {
+        setState(() {
+          showBackWidget = false;
+        });
+      }
+    }
   }
 }

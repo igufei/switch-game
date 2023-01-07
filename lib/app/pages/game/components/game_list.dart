@@ -1,4 +1,4 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:switch_game/app/model/game_model.dart';
 import 'package:switch_game/app/pages/game/components/search_bar.dart';
@@ -49,8 +49,7 @@ class GameList extends GetView<GameController> {
                               game: element,
                               onClick: (id) async {
                                 var game = await GameModel.findByGameID(id);
-                                controller.gameDetail.value = SizedBox(child: GameDetails(game: game!));
-                                controller.viewIndex.value = 1;
+                                controller.rc.next(GameDetails(game: game!));
                               },
                             ))
                         .toList(),

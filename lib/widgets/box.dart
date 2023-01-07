@@ -10,7 +10,7 @@ class Box extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(bottom: 10),
       decoration: BoxDecoration(
-          boxShadow: [BoxShadow(color: Colors.black12, offset: Offset(2.0, 2.0), blurRadius: 4.0)],
+          boxShadow: const [BoxShadow(color: Colors.black12, offset: Offset(2.0, 2.0), blurRadius: 4.0)],
           color: Colors.white,
           borderRadius: BorderRadius.all(
             Radius.circular(10),
