@@ -50,11 +50,13 @@ class GameItem extends GetView {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
+                      locale: Locale('zh', 'CN'),
                       game.name,
-                      style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+                      style: TextStyle(fontSize: 15.5, fontWeight: FontWeight.bold),
                       overflow: TextOverflow.ellipsis,
                     ),
                     Text(
+                      locale: Locale('zh', 'CN'),
                       game.englishName,
                       style: TextStyle(fontSize: 10),
                       overflow: TextOverflow.ellipsis,
@@ -65,12 +67,14 @@ class GameItem extends GetView {
                         Padding(
                           padding: EdgeInsets.only(right: 5),
                           child: Text(
+                            locale: Locale('zh', 'CN'),
                             '类型',
                             style: TextStyle(color: Color(0xff9497a0)),
                           ),
                         ),
                         Expanded(
                           child: Text(
+                            locale: Locale('zh', 'CN'),
                             typeText,
                             overflow: TextOverflow.ellipsis,
                           ),
@@ -82,12 +86,14 @@ class GameItem extends GetView {
                         Padding(
                           padding: EdgeInsets.only(right: 5),
                           child: Text(
+                            locale: Locale('zh', 'CN'),
                             '语言',
                             style: TextStyle(color: Color(0xff9497a0)),
                           ),
                         ),
                         Expanded(
                           child: Text(
+                            locale: Locale('zh', 'CN'),
                             game.language == '' ? '-' : game.language,
                             overflow: TextOverflow.ellipsis,
                           ),
@@ -99,12 +105,14 @@ class GameItem extends GetView {
                         Padding(
                           padding: EdgeInsets.only(right: 5),
                           child: Text(
+                            locale: Locale('zh', 'CN'),
                             '版本',
                             style: TextStyle(color: Color(0xff9497a0)),
                           ),
                         ),
                         Expanded(
                           child: Text(
+                            locale: Locale('zh', 'CN'),
                             game.version == '' ? '-' : game.version,
                             overflow: TextOverflow.ellipsis,
                           ),

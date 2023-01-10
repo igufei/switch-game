@@ -1,3 +1,7 @@
 {
-    "commentTranslate.targetLanguage": "zh-CN"
+    "commentTranslate.targetLanguage": "zh-CN",
+    "yaml.schemas": {
+        "https://json.schemastore.org/pubspec.json": "file:///e%3A/Work/Flutter/switch_game/pubspec.yaml"
+    },
+    "commentTranslate.hover.enabled": true
 }

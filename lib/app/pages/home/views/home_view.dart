@@ -58,6 +58,7 @@ class HomeView extends GetView<HomeController> {
                     padding: EdgeInsets.only(bottom: 5),
                     alignment: Alignment.bottomCenter,
                     child: Text(
+                      locale: Locale('zh', 'CN'),
                       "版本 v0.01",
                       style: TextStyle(color: Colors.black54, fontSize: 12),
                     ),

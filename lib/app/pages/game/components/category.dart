@@ -67,6 +67,7 @@ class _CategoryState extends State<Category> {
                   //borderRadius: BorderRadius.all(Radius.circular(4.0)),
                 ),
                 child: Text(
+                  locale: Locale('zh', 'CN'),
                   value['Name'].toString(),
                   style: TextStyle(color: textColor),
                 ),

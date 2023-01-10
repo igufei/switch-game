@@ -27,6 +27,7 @@ class MyButton extends StatelessWidget {
         ),
         onPressed: onPressed,
         child: Text(
+          locale: Locale('zh', 'CN'),
           title,
           style: TextStyle(fontSize: 13),
         ),

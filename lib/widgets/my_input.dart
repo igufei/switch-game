@@ -30,6 +30,7 @@ class MyInput extends StatelessWidget {
               ? Padding(
                   padding: const EdgeInsets.only(right: 10),
                   child: Text(
+                    locale: Locale('zh', 'CN'),
                     title,
                     style: TextStyle(color: titleColor),
                   ),
@@ -39,6 +40,7 @@ class MyInput extends StatelessWidget {
                   child: SizedBox(
                     width: titleWidth,
                     child: Text(
+                      locale: Locale('zh', 'CN'),
                       title,
                       style: TextStyle(color: titleColor),
                     ),

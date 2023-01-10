@@ -2,18 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:switch_game/app/pages/game/controllers/game_controller.dart';
-import 'package:switch_game/widgets/my_button.dart';
 
 class SearchBar extends GetView<GameController> {
   final dynamic Function() onSearched;
-  final dynamic Function() onNextPage;
-  final dynamic Function() onPreviousPage;
   final FocusNode _fn = FocusNode();
   SearchBar({
     super.key,
     required this.onSearched,
-    required this.onNextPage,
-    required this.onPreviousPage,
   }) {
     _fn.onKey = ((node, event) {
       if (event.isKeyPressed(LogicalKeyboardKey.enter)) {
@@ -109,6 +104,7 @@ class SearchBar extends GetView<GameController> {
                 width: 50,
                 decoration: BoxDecoration(color: Get.theme.primaryColorDark),
                 child: Text(
+                  locale: Locale('zh', 'CN'),
                   '搜索',
                   style: TextStyle(color: Colors.white, fontSize: 13),
                 )),
@@ -121,20 +117,21 @@ class SearchBar extends GetView<GameController> {
             child: Obx(() {
               var pageNum = (controller.gameCount.value / 12).ceil();
               return RichText(
+                  locale: Locale('zh', 'CN'),
                   text: TextSpan(
-                style: TextStyle(color: Colors.black),
-                children: [
-                  TextSpan(text: '第'),
-                  TextSpan(text: '${controller.currentPageIndex.value}', style: TextStyle(color: Colors.red)),
-                  TextSpan(text: '/'),
-                  TextSpan(text: '$pageNum'),
-                  TextSpan(text: '页  '),
-                  TextSpan(text: '${controller.gameCount.value}', style: TextStyle(color: Colors.blue)),
-                  TextSpan(text: '款'),
-                ],
-              ));
+                    style: TextStyle(color: Colors.black),
+                    children: [
+                      TextSpan(text: '第'),
+                      TextSpan(text: '${controller.currentPageIndex.value}', style: TextStyle(color: Colors.red)),
+                      TextSpan(text: '/'),
+                      TextSpan(text: '$pageNum'),
+                      TextSpan(text: '页  共计'),
+                      TextSpan(text: '${controller.gameCount.value}', style: TextStyle(color: Colors.blue)),
+                      TextSpan(text: '款'),
+                    ],
+                  ));
             })),
-        MyButton(
+        /* MyButton(
           title: '上一页',
           onPressed: () {
             controller.currentPageIndex.value--;
@@ -150,7 +147,7 @@ class SearchBar extends GetView<GameController> {
             controller.currentPageIndex.value++;
             onNextPage();
           },
-        ),
+        ), */
       ],
     );
   }

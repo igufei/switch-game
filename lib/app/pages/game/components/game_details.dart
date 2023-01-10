@@ -50,6 +50,7 @@ class GameDetails extends GetView<GameController> {
                     Row(
                       children: [
                         Text(
+                          locale: Locale('zh', 'CN'),
                           game.name,
                           style: TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
                           overflow: TextOverflow.ellipsis,
@@ -57,6 +58,7 @@ class GameDetails extends GetView<GameController> {
                         Padding(
                           padding: const EdgeInsets.only(left: 5),
                           child: Text(
+                            locale: Locale('zh', 'CN'),
                             game.englishName,
                             style: TextStyle(fontSize: 12),
                             overflow: TextOverflow.ellipsis,
@@ -75,12 +77,14 @@ class GameDetails extends GetView<GameController> {
                               Padding(
                                 padding: EdgeInsets.only(right: 5),
                                 child: Text(
+                                  locale: Locale('zh', 'CN'),
                                   '游戏类别',
                                   style: TextStyle(color: Color(0xff9497a0)),
                                 ),
                               ),
                               Expanded(
                                 child: Text(
+                                  locale: Locale('zh', 'CN'),
                                   typeText,
                                   overflow: TextOverflow.ellipsis,
                                 ),
@@ -96,12 +100,14 @@ class GameDetails extends GetView<GameController> {
                               Padding(
                                 padding: EdgeInsets.only(right: 5),
                                 child: Text(
+                                  locale: Locale('zh', 'CN'),
                                   '游戏语言',
                                   style: TextStyle(color: Color(0xff9497a0)),
                                 ),
                               ),
                               Expanded(
                                 child: Text(
+                                  locale: Locale('zh', 'CN'),
                                   game.language == '' ? '-' : game.language,
                                   overflow: TextOverflow.ellipsis,
                                 ),
@@ -114,11 +120,13 @@ class GameDetails extends GetView<GameController> {
                             Padding(
                               padding: EdgeInsets.only(right: 5),
                               child: Text(
+                                locale: Locale('zh', 'CN'),
                                 '游戏版本',
                                 style: TextStyle(color: Color(0xff9497a0)),
                               ),
                             ),
                             Text(
+                              locale: Locale('zh', 'CN'),
                               game.version == '' ? '-' : game.version,
                               overflow: TextOverflow.ellipsis,
                             ),
@@ -136,12 +144,14 @@ class GameDetails extends GetView<GameController> {
                               Padding(
                                 padding: EdgeInsets.only(right: 5),
                                 child: Text(
+                                  locale: Locale('zh', 'CN'),
                                   '发布日期',
                                   style: TextStyle(color: Color(0xff9497a0)),
                                 ),
                               ),
                               Expanded(
                                 child: Text(
+                                  locale: Locale('zh', 'CN'),
                                   game.publishDate == '' ? '-' : game.publishDate,
                                   overflow: TextOverflow.ellipsis,
                                 ),
@@ -157,11 +167,13 @@ class GameDetails extends GetView<GameController> {
                               Padding(
                                 padding: EdgeInsets.only(right: 5),
                                 child: Text(
+                                  locale: Locale('zh', 'CN'),
                                   '媒体评分',
                                   style: TextStyle(color: Color(0xff9497a0)),
                                 ),
                               ),
                               Text(
+                                locale: Locale('zh', 'CN'),
                                 game.score == '' ? '-.-' : game.score,
                                 overflow: TextOverflow.ellipsis,
                               ),
@@ -264,6 +276,7 @@ class GameDetails extends GetView<GameController> {
                           wc.dispose();
                         },
                         child: Text(
+                          locale: Locale('zh', 'CN'),
                           '点击查看游戏视频',
                           style: TextStyle(fontSize: 30, color: Colors.blue),
                         )),

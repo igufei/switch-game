@@ -13,6 +13,7 @@ class GameController extends GetxController {
   var currentPageIndex = 1.obs;
   var games = <GameSchame>[].obs;
   TextEditingController gameNameC = TextEditingController();
+  ScrollController sc = ScrollController();
   RouteController rc = RouteController();
 
   var category = <dynamic>[];
@@ -20,12 +21,24 @@ class GameController extends GetxController {
     games.value = GameModel.findMany(currentCategoryID.value, gameNameC.text, currentPageIndex.value);
     gameCount.value = GameModel.count(currentCategoryID.value, gameNameC.text, currentPageIndex.value);
     games.refresh();
+    sc.jumpTo(0);
   }
 
   @override
   void onInit() {
     category = jsonDecode(categoryData);
-    loadGames();
+    games.value = GameModel.findMany(currentCategoryID.value, gameNameC.text, currentPageIndex.value);
+    gameCount.value = GameModel.count(currentCategoryID.value, gameNameC.text, currentPageIndex.value);
+    //loadGames();
+    sc.addListener(() {
+      if (sc.position.pixels == sc.position.maxScrollExtent) {
+        print('load data');
+        currentPageIndex.value = currentPageIndex.value + 1;
+        var nextGames = GameModel.findMany(currentCategoryID.value, gameNameC.text, currentPageIndex.value);
+        games.addAll(nextGames);
+        games.refresh();
+      }
+    });
     super.onInit();
   }
 }

@@ -20,6 +20,7 @@ class Msg {
                 Align(
                   alignment: Alignment.topLeft,
                   child: Text(
+                    locale: Locale('zh', 'CN'),
                     title,
                     style: const TextStyle(fontSize: 14),
                   ),
@@ -27,6 +28,7 @@ class Msg {
                 Padding(
                   padding: const EdgeInsets.only(left: 8, right: 8, top: 15, bottom: 15),
                   child: Text(
+                    locale: Locale('zh', 'CN'),
                     text,
                     style: const TextStyle(fontSize: 14),
                   ),
@@ -82,6 +84,7 @@ class Msg {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
+                        locale: Locale('zh', 'CN'),
                         title,
                         style: const TextStyle(color: Color(0xFF111110), fontSize: 16),
                       ),
@@ -90,6 +93,7 @@ class Msg {
                             Get.back();
                           },
                           child: const Text(
+                            locale: Locale('zh', 'CN'),
                             "×",
                             style: TextStyle(fontSize: 20, color: Colors.red),
                           ))

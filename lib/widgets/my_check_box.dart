@@ -26,6 +26,7 @@ class MyCheckBox extends StatelessWidget {
               onChanged?.call(!status);
             },
             child: Text(
+              locale: Locale('zh', 'CN'),
               title,
               style: TextStyle(fontSize: 14),
             ),

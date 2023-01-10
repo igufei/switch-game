@@ -18,6 +18,7 @@ void main() async {
       debugShowCheckedModeBanner: false,
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
+      //
       onInit: () async {
         Get.changeTheme(ThemeData(
           primaryColor: Color(0xffff312e),

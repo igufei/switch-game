@@ -49,6 +49,7 @@ class _WindowsAppBarState extends State<WindowsAppBar> {
               windowManager.startDragging();
             },
             child: Text(
+              locale: Locale('zh', 'CN'),
               widget.title,
               style: TextStyle(color: Colors.black),
             ),

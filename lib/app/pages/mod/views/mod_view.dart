@@ -12,6 +12,7 @@ class ModView extends GetView<ModController> {
       appBar: WindowsAppBar(title: 'Switch Mod下载'),
       body: const Center(
         child: Text(
+          locale: Locale('zh', 'CN'),
           '内容开发中...',
           style: TextStyle(fontSize: 20),
         ),

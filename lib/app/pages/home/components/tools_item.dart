@@ -37,6 +37,7 @@ class ToolsItem extends GetView {
                 ),
                 SizedBox(width: 10),
                 Text(
+                  locale: Locale('zh', 'CN'),
                   name,
                   style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                 ),
@@ -75,6 +76,7 @@ class ToolsItem extends GetView {
               ],
             ),
             Text(
+              locale: Locale('zh', 'CN'),
               summary,
               style: TextStyle(color: Colors.black87),
             ),

@@ -168,7 +168,7 @@ class GameModel {
   }
 
   static List<GameSchame> _sublist(List<GameSchame> list, int pageIndex) {
-    var pageSize = 12;
+    var pageSize = 15;
     var startIndex = (pageIndex - 1) * pageSize;
     var endIndex = startIndex + pageSize;
     if (startIndex >= list.length) {

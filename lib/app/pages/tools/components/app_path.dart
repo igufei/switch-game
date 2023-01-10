@@ -38,6 +38,7 @@ class AppPath extends GetView<ToolsController> {
                                 border: Border.all(color: Color.fromARGB(255, 195, 195, 195), width: 0.5),
                               ),
                               child: Text(
+                                locale: Locale('zh', 'CN'),
                                 e['path'].toString(),
                                 maxLines: 1,
                                 overflow: TextOverflow.visible,
