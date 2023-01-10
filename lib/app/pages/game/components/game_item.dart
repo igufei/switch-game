@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
@@ -30,6 +31,20 @@ class GameItem extends GetView {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               game.cover.contains('indienova')
+                  ? CachedNetworkImage(
+                      imageUrl: game.cover,
+                      width: 120,
+                      height: 120,
+                      fit: BoxFit.cover,
+                      httpHeaders: const {'referer': 'https://indienova.com/'},
+                    )
+                  : CachedNetworkImage(
+                      imageUrl: game.cover,
+                      width: 120,
+                      height: 120,
+                      fit: BoxFit.cover,
+                    ),
+              /* game.cover.contains('indienova')
                   ? Image.network(
                       game.cover,
                       width: 120,
@@ -42,7 +57,7 @@ class GameItem extends GetView {
                       width: 120,
                       height: 120,
                       fit: BoxFit.cover,
-                    ),
+                    ), */
               Container(
                 width: 170,
                 padding: EdgeInsets.only(top: 11, bottom: 5, right: 5, left: 5),
