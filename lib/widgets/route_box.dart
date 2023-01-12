@@ -32,8 +32,23 @@ class RouteController extends ChangeNotifier {
 
 class _RouteBoxState extends State<RouteBox> {
   int viewIndex = 0;
+  final Widget _widget = Container();
   @override
   Widget build(BuildContext context) {
+    /*  return AnimatedSwitcher(
+      transitionBuilder: (child, animation) {
+        return SlideTransition(
+          position: Tween<Offset>(begin: Offset(1.0, 0.0), end: Offset.zero).animate(animation),
+          child: child,
+        );
+      },
+      duration: Duration(milliseconds: 200),
+      child: IndexedStack(
+        index: viewIndex,
+        children: widget.controller.views,
+      ),
+    ); */
+
     return IndexedStack(
       index: viewIndex,
       children: widget.controller.views,

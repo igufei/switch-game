@@ -44,20 +44,6 @@ class GameItem extends GetView {
                       height: 120,
                       fit: BoxFit.cover,
                     ),
-              /* game.cover.contains('indienova')
-                  ? Image.network(
-                      game.cover,
-                      width: 120,
-                      height: 120,
-                      fit: BoxFit.cover,
-                      headers: const {'referer': 'https://indienova.com/'},
-                    )
-                  : Image.network(
-                      game.cover,
-                      width: 120,
-                      height: 120,
-                      fit: BoxFit.cover,
-                    ), */
               Container(
                 width: 170,
                 padding: EdgeInsets.only(top: 11, bottom: 5, right: 5, left: 5),
