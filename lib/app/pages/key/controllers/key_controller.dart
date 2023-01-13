@@ -1,23 +1,6 @@
 import 'package:get/get.dart';
+import 'package:switch_game/widgets/desktop_route.dart';
 
 class KeyController extends GetxController {
-  //TODO: Implement KeyController
-
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
-  }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
+  RouteController rc = RouteController();
 }

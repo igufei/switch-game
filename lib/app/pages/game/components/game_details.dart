@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:switch_game/app/model/game_model.dart';
+import 'package:switch_game/app/pages/game/components/game_video.dart';
 import 'package:switch_game/app/pages/game/controllers/game_controller.dart';
 import 'package:switch_game/widgets/click.dart';
 import 'package:switch_game/widgets/msg.dart';
@@ -262,6 +263,8 @@ class GameDetails extends GetView<GameController> {
                     child: Click(
                         onClick: () async {
                           //launchUrl(Uri.parse(url));
+                          controller.rc.next(GameVideo(videoUrl: url));
+                          return;
                           final wc = WebviewController();
                           await wc.initialize();
                           await wc.setPopupWindowPolicy(WebviewPopupWindowPolicy.sameWindow);

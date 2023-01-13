@@ -12,7 +12,7 @@ class FadeIndexedStack extends StatefulWidget {
     required this.index,
     required this.children,
     this.duration = const Duration(
-      milliseconds: 800,
+      milliseconds: 50,
     ),
   }) : super(key: key);
 
@@ -22,7 +22,7 @@ class FadeIndexedStack extends StatefulWidget {
 
 class _FadeIndexedStackState extends State<FadeIndexedStack> with SingleTickerProviderStateMixin {
   late final AnimationController _controller = AnimationController(vsync: this, duration: widget.duration)..forward();
-  late final Animation<Offset> _position = Tween<Offset>(begin: Offset(1.0, 0), end: Offset.zero)
+  late final Animation<Offset> _position = Tween<Offset>(begin: Offset(0.15, 0), end: Offset.zero)
       .animate(CurvedAnimation(parent: _controller, curve: Curves.easeIn));
 
   @override

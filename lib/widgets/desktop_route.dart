@@ -1,16 +1,18 @@
 import 'package:flutter/widgets.dart';
 
-class RouteBox extends StatefulWidget {
+import 'fade_indexed_stack.dart';
+
+class DesktopRoute extends StatefulWidget {
   final RouteController controller;
   final Widget initWidget;
-  const RouteBox({
+  const DesktopRoute({
     super.key,
     required this.controller,
     required this.initWidget,
   });
 
   @override
-  State<RouteBox> createState() => _RouteBoxState();
+  State<DesktopRoute> createState() => _DesktopRouteState();
 }
 
 class RouteController extends ChangeNotifier {
@@ -30,9 +32,8 @@ class RouteController extends ChangeNotifier {
   }
 }
 
-class _RouteBoxState extends State<RouteBox> {
+class _DesktopRouteState extends State<DesktopRoute> {
   int viewIndex = 0;
-  final Widget _widget = Container();
   @override
   Widget build(BuildContext context) {
     /*  return AnimatedSwitcher(
@@ -47,9 +48,9 @@ class _RouteBoxState extends State<RouteBox> {
         index: viewIndex,
         children: widget.controller.views,
       ),
-    ); */
-
-    return IndexedStack(
+    );
+ */
+    return FadeIndexedStack(
       index: viewIndex,
       children: widget.controller.views,
     );

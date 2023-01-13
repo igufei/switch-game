@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:switch_game/app/pages/home/components/tools_item.dart';
 import 'package:switch_game/app/pages/tools/components/app_path.dart';
-import 'package:switch_game/widgets/app_bar.dart';
 import 'package:switch_game/widgets/click.dart';
+import 'package:switch_game/widgets/desktop_app_bar.dart';
 
 import '../controllers/tools_controller.dart';
 
@@ -16,7 +16,7 @@ class ToolsView extends GetView {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: WindowsAppBar(title: 'Switch模拟器'),
+      appBar: DesktopAppBar(title: 'Switch模拟器'),
       body: Stack(
         children: [
           Container(
