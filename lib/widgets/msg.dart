@@ -115,7 +115,14 @@ class Msg {
     if (Get.isSnackbarOpen) {
       return;
     }
-    Get.snackbar('提示', text,
-        backgroundColor: textColor == Colors.white ? Colors.black26 : Colors.white, colorText: textColor);
+    Get.snackbar(
+      '提示',
+      text,
+      margin: EdgeInsets.only(top: 10),
+      backgroundColor: textColor == Colors.white ? Colors.black54 : Colors.white,
+      colorText: textColor,
+      titleText: Container(),
+      maxWidth: 300,
+    );
   }
 }

@@ -1,15 +1,16 @@
+import 'dart:io';
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:switch_game/app/model/game_model.dart';
-import 'package:switch_game/app/pages/game/components/game_video.dart';
 import 'package:switch_game/app/pages/game/controllers/game_controller.dart';
 import 'package:switch_game/widgets/click.dart';
+import 'package:switch_game/widgets/desktop_webview.dart';
 import 'package:switch_game/widgets/msg.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:webview_windows/webview_windows.dart';
 
 class GameDetails extends GetView<GameController> {
   final GameSchame game;
@@ -187,14 +188,15 @@ class GameDetails extends GetView<GameController> {
                       children: [
                         GFButton(
                           onPressed: () {
-                            //print(game.baiduDownUrl);
-                            launchUrl(Uri.parse(game.baiduDownUrl.replaceFirst('&&&&', '?pwd=')));
+                            if (Platform.isWindows) {
+                              controller.rc.next(DesktopWebview(url: game.baiduDownUrl.replaceFirst('&&&&', '?pwd=')));
+                            } else {
+                              launchUrl(Uri.parse(game.baiduDownUrl.replaceFirst('&&&&', '?pwd=')));
+                            }
                           },
                           shape: GFButtonShape.square,
                           size: GFSize.SMALL,
-                          //text: '百度网盘下载',
                           color: Colors.white,
-                          //borderSide: BorderSide(color: Colors.black12, width: 0.5),
                           child: Image.network(
                             'https://pan.baidu.com/box-static/disk-theme/theme/white/img/logo@2x.png',
                             height: 20,
@@ -216,7 +218,11 @@ class GameDetails extends GetView<GameController> {
                                     '密码已复制,在网页中直接粘贴即可',
                                     onOK: () {
                                       Get.back();
-                                      launchUrl(Uri.parse(arr[0]));
+                                      if (Platform.isWindows) {
+                                        controller.rc.next(DesktopWebview(url: arr[0]));
+                                      } else {
+                                        launchUrl(Uri.parse(arr[0]));
+                                      }
                                     },
                                     onCancel: null,
                                     barrierDismissible: false,
@@ -262,21 +268,11 @@ class GameDetails extends GetView<GameController> {
                     color: Colors.black12,
                     child: Click(
                         onClick: () async {
-                          //launchUrl(Uri.parse(url));
-                          controller.rc.next(GameVideo(videoUrl: url));
-                          return;
-                          final wc = WebviewController();
-                          await wc.initialize();
-                          await wc.setPopupWindowPolicy(WebviewPopupWindowPolicy.sameWindow);
-                          await wc.loadUrl(url);
-                          await Get.dialog(
-                            Dialog(
-                              child: Webview(wc),
-                            ),
-                            barrierDismissible: true,
-                            barrierColor: Colors.white,
-                          );
-                          wc.dispose();
+                          if (Platform.isWindows) {
+                            controller.rc.next(DesktopWebview(url: url));
+                          } else {
+                            launchUrl(Uri.parse(url));
+                          }
                         },
                         child: Text(
                           locale: Locale('zh', 'CN'),

@@ -85,7 +85,7 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
                         Icon(
                           e.value.icon,
                           color: color,
-                          size: 30,
+                          size: 25,
                         ),
                         SizedBox(height: 2),
                         Text(
