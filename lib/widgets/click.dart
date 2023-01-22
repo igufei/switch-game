@@ -1,9 +1,8 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/cupertino.dart';
-import 'package:get/get.dart';
 
-class Click extends GetView {
+class Click extends StatelessWidget {
   final Widget child;
   final Function() onClick;
   Function()? onHover;

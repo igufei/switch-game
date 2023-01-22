@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:switch_game/widgets/click.dart';
-import 'package:switch_game/widgets/desktop_route.dart';
-import 'package:switch_game/widgets/visible.dart';
 import 'package:window_manager/window_manager.dart';
+
+import 'click.dart';
+import 'desktop_route.dart';
+import 'visible.dart';
 
 class DesktopAppBar extends StatefulWidget implements PreferredSizeWidget {
   final String title;

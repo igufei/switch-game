@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:switch_game/app/model/game_model.dart';
+import 'package:switch_game/app/models/game_model.dart';
 import 'package:switch_game/app/pages/game/components/search_bar.dart';
 import 'package:switch_game/app/pages/game/controllers/game_controller.dart';
 

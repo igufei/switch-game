@@ -131,23 +131,6 @@ class SearchBar extends GetView<GameController> {
                     ],
                   ));
             })),
-        /* MyButton(
-          title: '上一页',
-          onPressed: () {
-            controller.currentPageIndex.value--;
-            if (controller.currentPageIndex.value <= 0) {
-              controller.currentPageIndex.value = 1;
-            }
-            onPreviousPage();
-          },
-        ),
-        MyButton(
-          title: '下一页',
-          onPressed: () {
-            controller.currentPageIndex.value++;
-            onNextPage();
-          },
-        ), */
       ],
     );
   }

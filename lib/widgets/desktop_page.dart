@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:switch_game/widgets/desktop_route.dart';
 
 import 'desktop_app_bar.dart';
+import 'desktop_route.dart';
 
 class DesktopPage extends StatelessWidget {
   final String title;

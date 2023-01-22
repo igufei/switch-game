@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:switch_game/app/data/category_data.dart';
-import 'package:switch_game/app/model/game_model.dart';
+import 'package:switch_game/app/models/game_model.dart';
 import 'package:switch_game/widgets/desktop_route.dart';
 
 class GameController extends GetxController {

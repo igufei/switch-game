@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:switch_game/app/model/game_model.dart';
+import 'package:switch_game/app/models/game_model.dart';
 import 'package:switch_game/modules/tools.dart';
 import 'package:switch_game/widgets/msg.dart';
 import 'package:window_manager/window_manager.dart';

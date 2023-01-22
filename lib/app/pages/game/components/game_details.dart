@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
-import 'package:switch_game/app/model/game_model.dart';
+import 'package:switch_game/app/models/game_model.dart';
 import 'package:switch_game/app/pages/game/controllers/game_controller.dart';
 import 'package:switch_game/widgets/click.dart';
 import 'package:switch_game/widgets/desktop_webview.dart';

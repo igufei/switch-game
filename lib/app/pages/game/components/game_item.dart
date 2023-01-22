@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
-import 'package:switch_game/app/model/game_model.dart';
+import 'package:switch_game/app/models/game_model.dart';
 import 'package:switch_game/widgets/click.dart';
 
 class GameItem extends GetView {
