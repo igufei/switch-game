@@ -19,7 +19,7 @@ class GameController extends GetxController {
   var category = <dynamic>[];
   void loadGames() {
     games.value = GameModel.findMany(currentCategoryID.value, gameNameC.text, currentPageIndex.value);
-    gameCount.value = GameModel.count(currentCategoryID.value, gameNameC.text, currentPageIndex.value);
+    gameCount.value = GameModel.count(currentCategoryID.value, gameNameC.text);
     games.refresh();
     sc.jumpTo(0);
   }
@@ -28,12 +28,15 @@ class GameController extends GetxController {
   void onInit() {
     category = jsonDecode(categoryData);
     games.value = GameModel.findMany(currentCategoryID.value, gameNameC.text, currentPageIndex.value);
-    gameCount.value = GameModel.count(currentCategoryID.value, gameNameC.text, currentPageIndex.value);
+    gameCount.value = GameModel.count(currentCategoryID.value, gameNameC.text);
     //loadGames();
     sc.addListener(() {
-      if (sc.position.pixels == sc.position.maxScrollExtent) {
-        currentPageIndex.value = currentPageIndex.value + 1;
-        var nextGames = GameModel.findMany(currentCategoryID.value, gameNameC.text, currentPageIndex.value);
+      if (sc.position.pixels >= sc.position.maxScrollExtent) {
+        var pageIndex = currentPageIndex.value + 1;
+        var nextGames = GameModel.findMany(currentCategoryID.value, gameNameC.text, pageIndex);
+        if (nextGames.length > 0) {
+          currentPageIndex.value = pageIndex;
+        }
         games.addAll(nextGames);
         games.refresh();
       }

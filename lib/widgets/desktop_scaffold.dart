@@ -1,5 +1,7 @@
 // ignore_for_file: must_be_immutable
 
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 import 'click.dart';
@@ -48,6 +50,7 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
           Container(
             decoration: BoxDecoration(border: Border(right: BorderSide(color: Color.fromARGB(255, 207, 206, 206)))),
             child: Column(children: [
+              if (Platform.isMacOS) SizedBox(height: 18),
               if (widget.leading != null) widget.leading!,
               SizedBox(height: 10),
               ...widget.pages.asMap().entries.map((e) {

@@ -6,6 +6,7 @@ import 'package:switch_game/app/data/category_data.dart';
 import 'package:switch_game/app/data/game_data.dart';
 
 class GameModel {
+  static const pageSize = 15;
   static List<dynamic> _gameList = [];
   static String categoryId2Text(int categoryID) {
     List<dynamic> categorys = jsonDecode(categoryData);
@@ -19,7 +20,7 @@ class GameModel {
     return '未知';
   }
 
-  static int count(int categoryID, String gameName, int pageIndex) {
+  static int count(int categoryID, String gameName) {
     List<GameSchame> list = [];
     gameName = gameName.trim();
     for (var item in _gameList) {
@@ -168,7 +169,6 @@ class GameModel {
   }
 
   static List<GameSchame> _sublist(List<GameSchame> list, int pageIndex) {
-    var pageSize = 15;
     var startIndex = (pageIndex - 1) * pageSize;
     var endIndex = startIndex + pageSize;
     if (startIndex >= list.length) {

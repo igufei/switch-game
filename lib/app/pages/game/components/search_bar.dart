@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:switch_game/app/models/game_model.dart';
 import 'package:switch_game/app/pages/game/controllers/game_controller.dart';
 
 class SearchBar extends GetView<GameController> {
@@ -115,7 +116,7 @@ class SearchBar extends GetView<GameController> {
         Padding(
             padding: EdgeInsets.only(right: 5),
             child: Obx(() {
-              var pageNum = (controller.gameCount.value / 12).ceil();
+              var pageNum = (controller.gameCount.value / GameModel.pageSize).ceil();
               return RichText(
                   locale: Locale('zh', 'CN'),
                   text: TextSpan(

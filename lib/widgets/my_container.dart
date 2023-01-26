@@ -27,7 +27,7 @@ class MyContainer extends StatelessWidget {
         margin: margin,
         padding: newpadding,
         decoration: BoxDecoration(
-            boxShadow: [
+            boxShadow: const [
               BoxShadow(
                 color: Colors.black38,
                 offset: Offset(2, 2),
