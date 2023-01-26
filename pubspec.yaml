@@ -1,5 +1,5 @@
 name: switch_game
-version: 1.0.2+4
+version: 1.0.3+4
 publish_to: none
 description: switch 游戏.
 environment:
