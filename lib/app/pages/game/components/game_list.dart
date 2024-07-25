@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:switch_game/app/models/game_model.dart';
-import 'package:switch_game/app/pages/game/components/search_bar.dart';
+import 'package:switch_game/app/pages/game/components/search_bar.dart' as igf;
 import 'package:switch_game/app/pages/game/controllers/game_controller.dart';
 
 import 'category.dart';
@@ -31,8 +31,9 @@ class GameList extends GetView<GameController> {
                 }),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 12, right: 12, top: 5, bottom: 5),
-            child: SearchBar(
+            padding:
+                const EdgeInsets.only(left: 12, right: 12, top: 5, bottom: 5),
+            child: igf.SearchBar(
               onSearched: () {
                 controller.currentCategoryIndex.value = 0;
                 controller.currentCategoryID.value = 0;
@@ -57,8 +58,10 @@ class GameList extends GetView<GameController> {
                               .map((element) => GameItem(
                                     game: element,
                                     onClick: (id) async {
-                                      var game = await GameModel.findByGameID(id);
-                                      controller.rc.next(GameDetails(game: game!));
+                                      var game =
+                                          await GameModel.findByGameID(id);
+                                      controller.rc
+                                          .next(GameDetails(game: game!));
                                     },
                                   ))
                               .toList(),

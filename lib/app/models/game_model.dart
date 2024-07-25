@@ -130,7 +130,7 @@ class GameModel {
     if (infoArr.length >= 2) {
       language = infoArr[1];
     }
-    var cover = 'http://d.51switch.cn/m_${data['CoverPath']}';
+    var cover = 'http://d.51ns.info/${data['CoverPath']}';
     var indienova = data['indienova'];
     if (indienova != null) {
       slug = 'https://indienova.com/game/${indienova['slug']}';
@@ -159,7 +159,7 @@ class GameModel {
       baiduDownUrl: data['DownloadUrl'],
       aliDownUrl: data['AliUrl'],
       categoryID: data['CategoryId'],
-      detailsImages: ['http://d.51switch.cn/m_${data['CoverPath']}'],
+      detailsImages: ['http://d.51ns.info/${data['CoverPath']}'],
       cover: cover,
       summary: '',
       slug: slug,

@@ -23,7 +23,7 @@ void main() async {
       onInit: () async {
         Get.changeTheme(ThemeData(
           primaryColor: Color(0xffff312e),
-          backgroundColor: Color.fromARGB(255, 248, 183, 182),
+          //backgroundColor: Color.fromARGB(255, 248, 183, 182),
           primaryColorLight: Color(0xff00b6dd),
         ));
         var message = await Tools.check();
